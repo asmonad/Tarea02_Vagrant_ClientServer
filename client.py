@@ -1,9 +1,8 @@
+#!/usr/bin/python3
+import sys
 import socket
 
-
-def client_program():
-    host = socket.gethostname()  # as both code is running on same pc
-    port = 5000  # socket server port number
+def client_program(host, port):
 
     client_socket = socket.socket()  # instantiate
     client_socket.connect((host, port))  # connect to the server
@@ -22,4 +21,19 @@ def client_program():
 
 
 if __name__ == '__main__':
-    client_program()
+    host = socket.gethostname()
+    port = 5000
+
+    if len(sys.argv) > 1:
+        host = sys.argv[1]
+
+    if len(sys.argv) > 2:
+        try:
+            port = int(sys.argv[2])
+        except:
+            print("El puerto debe ser un numero.")
+            print("Uso: client.py <ip> <puerto>")
+            exit()
+
+    client_program(host, port)
+

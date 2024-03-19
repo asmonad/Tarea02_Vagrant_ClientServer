@@ -1,5 +1,5 @@
+#!/usr/bin/python3
 import socket
-
 
 def server_program():
     # get the hostname
@@ -25,7 +25,6 @@ def server_program():
         conn.send(data.encode())  # send data to the client
 
     conn.close()  # close the connection
-
 
 if __name__ == '__main__':
     server_program()
